@@ -1,5 +1,5 @@
 require "faraday"
-require "faraday_middleware"
+require "faraday/retry"
 
 module HandleRest
   # Handle Service
