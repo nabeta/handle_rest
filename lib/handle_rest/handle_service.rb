@@ -21,7 +21,7 @@ module HandleRest
     def initialize(url:, user:, password:, ssl_verify: true)
       @conn = Faraday.new(url: url,
         ssl: {verify: ssl_verify}) do |faraday|
-        faraday.request :basic_auth, CGI.escape(user), password
+        faraday.request :authorization, :basic, CGI.escape(user), password
         faraday.request :json # encode req bodies as JSON and automatically set the Content-Type header
         faraday.request :retry # retry transient failures
         faraday.response :json # decode response bodies as JSON
